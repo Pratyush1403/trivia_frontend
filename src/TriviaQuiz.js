@@ -14,7 +14,7 @@ const TriviaQuiz = ({ setShowHeader }) => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/questions');
+        const response = await axios.get('https://trivia-backend-sand.vercel.app/api/questions');
         setQuestions(response.data);
       } catch (error) {
         console.error('Error fetching trivia questions:', error);
@@ -55,6 +55,10 @@ const TriviaQuiz = ({ setShowHeader }) => {
     }
   };
 
+  const handleTryAgain = () => {
+    window.location.reload();
+  };
+
   if (questions.length === 0) {
     return <div>Loading...</div>;
   }
@@ -73,6 +77,7 @@ const TriviaQuiz = ({ setShowHeader }) => {
               <p>{answer.isCorrect ? 'Correct' : 'Incorrect'}</p>
             </div>
           ))}
+          <button onClick={handleTryAgain}>Try Again</button>
         </div>
       ) : (
         <div>
