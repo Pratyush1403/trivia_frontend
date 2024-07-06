@@ -1,0 +1,87 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  flex-grow: 1;
+}
+
+#root {
+  width: 100%;
+  height: max-content;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+footer p {
+  margin: 5px;
+}
+
+footer a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #29b6f6;
+}
+
+/* Media Queries for responsiveness */
+
+@media (max-width: 768px) {
+  .App {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  header {
+    font-size: 1rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    max-width: 100%;
+    padding: 5px;
+  }
+
+  header {
+    font-size: 0.8rem;
+  }
+
+  footer {
+    font-size: 0.6rem;
+  }
+}
