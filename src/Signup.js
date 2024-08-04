@@ -7,7 +7,7 @@ const SignUp = () => {
 
   const handleSignUp = async () => {
     try {
-      await axios.post('/api/signup', { email, password });
+      await axios.post('https://trivia-backend-sand.vercel.app/api/signup', { email, password });
       alert('User created successfully');
     } catch (error) {
       alert('Sign up failed');

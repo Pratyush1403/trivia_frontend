@@ -7,7 +7,7 @@ const Login = ({ setToken }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('/api/login', { email, password });
+      const response = await axios.post('https://trivia-backend-sand.vercel.app/api/login', { email, password });
       setToken(response.data.token);
     } catch (error) {
       alert('Login failed');
