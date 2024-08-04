@@ -13,14 +13,15 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decodedToken = jwtDecode(token);
-      console.log('Decoded token:', decodedToken); // Add this line
-      setUser(decodedToken.userId);
-    }
-  }, []);
+  import { jwtDecode } from "jwt-decode";
+
+useEffect(() => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    setUser(decodedToken.userId);
+  }
+}, []);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
