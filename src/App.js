@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
 import TriviaQuiz from './TriviaQuiz';
-import SignUp from './Signup';
-import Login from './Login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const App = () => {
-  const [token, setToken] = useState(null);
   const [showHeader, setShowHeader] = useState(true);
 
   return (
@@ -19,15 +16,8 @@ const App = () => {
         </header>
       )}
       <main style={{ marginTop: '3rem', marginBottom: '2.5rem' }}>
-      <div className="App">
-          {!token ? (
-            <>
-              <SignUp />
-              <Login setToken={setToken} />
-            </>
-          ) : (
-            <TriviaQuiz setShowHeader={setShowHeader} token={token} />
-          )}
+        <div className="App">
+          <TriviaQuiz setShowHeader={setShowHeader} />
         </div>
       </main>
       <footer>

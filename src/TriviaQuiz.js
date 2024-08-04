@@ -3,7 +3,7 @@ import axios from 'axios';
 import he from 'he';
 import './App.css';
 
-const TriviaQuiz = ({ setShowHeader, token }) => {
+const TriviaQuiz = ({ setShowHeader }) => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -28,7 +28,7 @@ const TriviaQuiz = ({ setShowHeader, token }) => {
     setSelectedOption(option);
   };
 
-  const handleNextQuestion = async () => {
+  const handleNextQuestion = () => {
     const correctAnswer = questions[currentQuestionIndex].correct_answer;
     const isCorrect = selectedOption === correctAnswer;
     setAnswers([
@@ -52,16 +52,6 @@ const TriviaQuiz = ({ setShowHeader, token }) => {
     } else {
       setShowScore(true);
       setShowHeader(false);
-
-      // Submit the score to the backend
-      try {
-        await axios.post('https://trivia-backend-sand.vercel.app/api/submit-score', {
-          token,
-          score
-        });
-      } catch (error) {
-        console.error('Error submitting score:', error);
-      }
     }
   };
 
@@ -108,7 +98,7 @@ const TriviaQuiz = ({ setShowHeader, token }) => {
               </div>
             ))}
           </div>
-          <button onClick={handleNextQuestion} disabled={!selectedOption}>Next Question</button>
+          <button onClick={handleNextQuestion}>Next Question</button>
         </div>
       )}
     </div>
