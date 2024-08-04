@@ -13,7 +13,7 @@ const TriviaQuiz = ({ setShowHeader, userId }) => {
 
   const fetchQuestions = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/questions');
+      const response = await axios.get('https://trivia-backend-sand.vercel.app/api/questions');
       setQuestions(response.data);
     } catch (error) {
       console.error('Error fetching trivia questions:', error);
@@ -60,7 +60,7 @@ const TriviaQuiz = ({ setShowHeader, userId }) => {
     try {
       const token = localStorage.getItem('token');
       console.log('Token:', token); // Add this line
-      const response = await axios.post('http://localhost:5000/api/score', 
+      const response = await axios.post('https://trivia-backend-sand.vercel.app/api/score', 
         { score: finalScore },
         {
           headers: {
