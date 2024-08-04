@@ -10,7 +10,7 @@ const Profile = ({ userId }) => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://localhost:5000/api/profile/${userId}`, {
+        const response = await axios.get(`https://trivia-backend-sand.vercel.app/api/profile/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -25,7 +25,7 @@ const Profile = ({ userId }) => {
     const fetchLeaderboard = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/leaderboard', {
+        const response = await axios.get('https://trivia-backend-sand.vercel.app/api/leaderboard', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
