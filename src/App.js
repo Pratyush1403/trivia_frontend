@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { jwtDecode } from "jwt-decode";
 import './App.css';
 import TriviaQuiz from './TriviaQuiz';
 import Auth from './Auth';
@@ -6,7 +7,7 @@ import Profile from './Profile';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { jwtDecode } from "jwt-decode";
+
 
 const App = () => {
   const [showHeader, setShowHeader] = useState(true);
