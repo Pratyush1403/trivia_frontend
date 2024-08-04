@@ -12,7 +12,7 @@ const Auth = ({ setUser }) => {
     e.preventDefault();
     try {
       const endpoint = isSignUp ? '/api/signup' : '/api/signin';
-      const response = await axios.post(`https://trivia-backend-sand.vercel.app${endpoint}`, { email, password });
+      const response = await axios.post(`http://localhost:5000${endpoint}`, { email, password });
       if (isSignUp) {
         setIsSignUp(false);
       } else {
