@@ -3,7 +3,7 @@ import axios from 'axios';
 import he from 'he';
 import './App.css';
 
-const TriviaQuiz = ({ setShowHeader }) => {
+const TriviaQuiz = ({ setShowHeader, userId }) => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -11,16 +11,16 @@ const TriviaQuiz = ({ setShowHeader }) => {
   const [showScore, setShowScore] = useState(false);
   const [answers, setAnswers] = useState([]);
 
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await axios.get('https://trivia-backend-sand.vercel.app/api/questions');
-        setQuestions(response.data);
-      } catch (error) {
-        console.error('Error fetching trivia questions:', error);
-      }
-    };
+  const fetchQuestions = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/questions');
+      setQuestions(response.data);
+    } catch (error) {
+      console.error('Error fetching trivia questions:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchQuestions();
   }, []);
 
@@ -52,11 +52,36 @@ const TriviaQuiz = ({ setShowHeader }) => {
     } else {
       setShowScore(true);
       setShowHeader(false);
+      updateScore(score + (isCorrect ? 1 : 0));
     }
   };
 
-  const handleTryAgain = () => {
-    window.location.reload();
+  const updateScore = async (finalScore) => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log('Token:', token); // Add this line
+      const response = await axios.post('http://localhost:5000/api/score', 
+        { score: finalScore },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      );
+      console.log('Score update response:', response.data); // Add this line
+    } catch (error) {
+      console.error('Error saving score:', error.response ? error.response.data : error.message);
+    }
+  };
+
+  const tryAgain = () => {
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setSelectedOption('');
+    setShowScore(false);
+    setAnswers([]);
+    fetchQuestions();
+    setShowHeader(true);
   };
 
   if (questions.length === 0) {
@@ -77,7 +102,7 @@ const TriviaQuiz = ({ setShowHeader }) => {
               <p>{answer.isCorrect ? 'Correct' : 'Incorrect'}</p>
             </div>
           ))}
-          <button onClick={handleTryAgain}>Try Again</button>
+          <button onClick={tryAgain}>Try Again</button>
         </div>
       ) : (
         <div>
