@@ -14,7 +14,6 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
 
-  import { jwtDecode } from "jwt-decode";
 
 useEffect(() => {
   const token = localStorage.getItem('token');
