@@ -26,7 +26,7 @@ const Profile = ({ userId }) => {
     const fetchLeaderboard = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('${URL}/api/leaderboard', {
+        const response = await axios.get(`${URL}/api/leaderboard`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
