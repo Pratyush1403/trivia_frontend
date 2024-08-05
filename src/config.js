@@ -1,1 +1,1 @@
-export const URL = 'https://trivia-backend-sand.vercel.app'
+export const URL = 'http://localhost:5000'
