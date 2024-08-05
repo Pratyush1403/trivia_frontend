@@ -1,1 +1,1 @@
-export const URL = 'https://trivia-backend-v2ud.onrender.com'
+export const URL = 'https://trivia-backend-xayz.onrender.com'
