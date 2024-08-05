@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { URL } from './config'
 
 const Profile = ({ userId }) => {
   const [profile, setProfile] = useState(null);
@@ -10,7 +11,7 @@ const Profile = ({ userId }) => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`https://trivia-backend-sand.vercel.app/api/profile/${userId}`, {
+        const response = await axios.get(`${URL}/api/profile/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -25,7 +26,7 @@ const Profile = ({ userId }) => {
     const fetchLeaderboard = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('https://trivia-backend-sand.vercel.app/api/leaderboard', {
+        const response = await axios.get('${URL}/api/leaderboard', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
