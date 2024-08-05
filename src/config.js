@@ -1,1 +1,1 @@
-export const URL = 'https://trivia-backend-sand.vercel.app'
+export const URL = 'https://trivia-backend-v2ud.onrender.com'
