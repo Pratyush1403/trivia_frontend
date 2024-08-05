@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Auth.css'; // Import the CSS file
+import { URL } from './config'
 
 const Auth = ({ setUser }) => {
   const [isSignUp, setIsSignUp] = useState(false);
