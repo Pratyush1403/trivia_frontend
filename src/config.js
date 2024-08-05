@@ -1,1 +1,1 @@
-export const URL = 'https://trivia-backend-xayz.onrender.com'
+export const URL = 'http://localhost:5000'
